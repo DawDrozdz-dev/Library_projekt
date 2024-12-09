@@ -1,5 +1,7 @@
 using Library.BookManager;
 using Library.UserInterFaceExecutor;
+using Library.Validators;
+
 namespace Library.Program;
 
 public class Program
@@ -7,7 +9,7 @@ public class Program
    static void Main(string[] args)
    {
       
-      DataValidator validator = new DataValidator();
+      IDataValidator validator = new DataValidatorForCreateBook();
       IBookBuilder bookBuilder = new BookBuilder();
       IDirector director = new Director(bookBuilder);
       IDataManager manager = new GetStringValue();

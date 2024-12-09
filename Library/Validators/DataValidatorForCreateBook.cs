@@ -1,6 +1,6 @@
-namespace Library.UserInterFaceExecutor;
+namespace Library.Validators;
 
-public class DataValidator : IStringValidator, IDoubleValidator, IIntValidator
+public class DataValidatorForCreateBook : IDataValidator
 {
     public string ValidateString(string value)
     {
