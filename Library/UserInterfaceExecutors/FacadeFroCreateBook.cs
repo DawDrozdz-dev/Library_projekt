@@ -1,14 +1,16 @@
+using Library.BookManager;
+using Library.UserInterFaceExecutor;
 using Library.Validators;
 
-namespace Library.UserInterFaceExecutor;
-using Library.BookManager;
-public class Facade
+namespace Library.UserInterfaceExecutors;
+
+public class FacadeFroCreateBook : IFacade
 {
    private readonly IDirector _director;
    private readonly IDataValidator _validator;
    private readonly IDataManager _dataManager;
 
-   public Facade(IDirector director, IDataValidator validator, IDataManager dataManager)
+   public FacadeFroCreateBook(IDirector director, IDataValidator validator, IDataManager dataManager)
    {
       _director = director;
       _validator = validator;
