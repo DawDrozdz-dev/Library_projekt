@@ -9,13 +9,18 @@ public class Program
 {
    static void Main(string[] args)
    {
-      
       IDataValidator validator = new DataValidatorForCreateBook();
       IBookBuilder bookBuilder = new BookBuilder();
       IDirector director = new Director(bookBuilder);
       IDataManager manager = new GetStringValue();
-      FacadeFroCreateBook facadeFroCreateBook = new FacadeFroCreateBook(director, validator, manager);
-      var book = facadeFroCreateBook.Execute();
-      Console.WriteLine(book);
+      UpdateBookManager updateBookManager = new UpdateBookHandler();
+      
+      IFacade facadeFroCreateBook = new FacadeFroCreateBook(director, validator, manager);
+      IFacade facadeForUpdateBook = new FacedeForUpdateBook(validator, manager, updateBookManager, facadeFroCreateBook);
+      ManageStrategy manageStrategy = new UpdateBookInList();
+      manageStrategy.Read();
+      IBook book = facadeForUpdateBook.Execute();
+      manageStrategy.Manage(book);
+      manageStrategy.Read();
    }
 }

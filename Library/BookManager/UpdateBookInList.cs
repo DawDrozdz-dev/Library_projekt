@@ -12,6 +12,7 @@ public class UpdateBookInList : ManageStrategy
                 item.Price = book.Price;
                 item.Description = book.Description;
                 item.Title = book.Title;
+                item.Id = book.Id;
             }
         }
         return this;
