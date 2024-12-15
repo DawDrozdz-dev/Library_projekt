@@ -4,13 +4,13 @@ using Library.Validators;
 
 namespace Library.UserInterfaceExecutors;
 
-public class FacadeFroCreateBook : IFacade
+public class FacadeForCreateBook : IFacade
 {
    private readonly IDirector _director;
    private readonly IDataValidator _validator;
    private readonly IDataManager _dataManager;
 
-   public FacadeFroCreateBook(IDirector director, IDataValidator validator, IDataManager dataManager)
+   public FacadeForCreateBook(IDirector director, IDataValidator validator, IDataManager dataManager)
    {
       _director = director;
       _validator = validator;

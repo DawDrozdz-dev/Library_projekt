@@ -1,16 +1,12 @@
+using Library.BookBase;
+
 namespace Library.BookManager;
 
-public class RemoveBookFromList : ManageStrategy
+public class RemoveBookFromList : IManageStrategy
 {
-    public override ManageStrategy Manage(IBook book)
+    public IManageStrategy Manage(IBook book)
     {
-        foreach (var item in books)
-        {
-            if (item.Id == book.Id)
-            {
-                books.Remove(item);
-            }
-        }
+        BaseOfBook.books.RemoveAll(item => item.Id == book.Id);
         return this;
     }
 }

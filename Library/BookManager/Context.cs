@@ -2,14 +2,14 @@ namespace Library.BookManager;
 
 public class Context
 {
-    private readonly ManageStrategy _manageStrategy;
+    private readonly IManageStrategy _manageStrategy;
 
-    public Context(ManageStrategy strategy)
+    public Context(IManageStrategy strategy)
     {
         _manageStrategy = strategy;
     }
 
-    public ManageStrategy Manage(IBook book)
+    public IManageStrategy Manage(IBook book)
     {
         var result = _manageStrategy.Manage(book);
         return result;

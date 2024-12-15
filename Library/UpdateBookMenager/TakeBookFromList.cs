@@ -1,11 +1,12 @@
+using Library.BookBase;
 using Library.BookManager;
 namespace Library.BookManager;
 
-public abstract class UpdateBookManager : ManageStrategy, ITakeBookFromList
+public class UpdateBookManager : ITakeBookFromList
 {
     public bool GetBook(int id)
     {
-        foreach (var book in books)
+        foreach (var book in BaseOfBook.books)
         {
             if (book.Id == id)
             {

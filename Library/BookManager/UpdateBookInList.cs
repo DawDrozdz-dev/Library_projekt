@@ -1,10 +1,12 @@
+using Library.BookBase;
+
 namespace Library.BookManager;
 
-public class UpdateBookInList : ManageStrategy
+public class UpdateBookInList : IManageStrategy
 {
-    public override ManageStrategy Manage(IBook book)
+    public IManageStrategy Manage(IBook book)
     {
-        foreach (var item in books)
+        foreach (var item in BaseOfBook.books)
         {
             if (item.Id == book.Id)
             {

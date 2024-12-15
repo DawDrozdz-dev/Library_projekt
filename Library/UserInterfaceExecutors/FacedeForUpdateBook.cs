@@ -9,10 +9,10 @@ public class FacedeForUpdateBook : IFacade
 {
     private readonly IDataValidator _validator;
     private readonly IDataManager _dataManager;
-    private readonly UpdateBookManager _updateBookManager;
+    private readonly ITakeBookFromList _updateBookManager;
     private readonly IFacade _facade;
 
-    public FacedeForUpdateBook(IDataValidator validator, IDataManager dataManager, UpdateBookManager updateBookManager,
+    public FacedeForUpdateBook(IDataValidator validator, IDataManager dataManager, ITakeBookFromList updateBookManager,
         IFacade facade)
     {
         _validator = validator;

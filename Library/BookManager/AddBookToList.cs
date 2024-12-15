@@ -1,11 +1,12 @@
+using Library.BookBase;
+
 namespace Library.BookManager;
 
-public class AddBookToList : ManageStrategy
+public class AddBookToList : IManageStrategy
 {
-    public override ManageStrategy Manage(IBook book)
+    public IManageStrategy Manage(IBook book)
     {
-       books.Add(book);
-       Console.WriteLine($"{book} added to list");
+       BaseOfBook.books.Add(book);
        return this;
     }
 }
