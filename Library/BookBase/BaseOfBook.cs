@@ -6,7 +6,17 @@ public class BaseOfBook
     private static readonly object _obj = new object();
 
     // Trwała lista książek
-    public static List<IBook> books { get; } = new List<IBook>();
+    public static List<IBook> books { get; } = new List<IBook>() {
+        new Comic()
+    {
+        Title = "test", Author = "test", Id = 1, Description = "test", Price = 19.11,
+        
+    },
+        new Comic() 
+        {
+        Title = "test", Author = "test", Id = 22, Description = "test", Price = 19.11,       
+    }
+    };
 
     private BaseOfBook() { }
 
