@@ -16,7 +16,11 @@ public class FacadeForReadBook : IFacade
         Console.WriteLine("Dostępne książki:");
         foreach (var book in BaseOfBook.books)
         {
-            Console.WriteLine($"ID: {book.Id}, Tytuł: {book.Title}");
+            Console.WriteLine($"\n Book title; {book.Title}\n " +
+                $"Author; {book.Author}\n " +
+                $"Price; {book.Price}\n " +
+                $"Description; {book.Description}\n" +
+                $"ID: {book.Id}\n");
         }
         return BaseOfBook.books[0];
     }

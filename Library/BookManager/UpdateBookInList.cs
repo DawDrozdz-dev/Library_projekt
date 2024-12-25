@@ -17,6 +17,7 @@ public class UpdateBookInList : IManageStrategy
                 item.Id = book.Id;
             }
         }
+        Console.WriteLine("Book has been updated.");
         return this;
     }
 }
