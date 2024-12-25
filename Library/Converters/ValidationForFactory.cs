@@ -2,13 +2,14 @@ using Library.UserInterFaceExecutor;
 
 namespace Library.Validators;
 
-public class ValidationForFactory : IStringConverter
+public class ValidationForFactory : IIntConverter
 {
-    public string ConvertString(string value)
+    public int ConvertInt(string value)
     {
-        if (value == "1" || value == "2" || value == "3" || value == "4")
+        if (value == "1" || value == "2" || value == "3" || value == "4" || value == "5")
         {
-            return value; 
+            int data = Convert.ToInt16(value);
+            return data; 
         }
         throw new ArgumentException($"{value} is invalid.");
     }

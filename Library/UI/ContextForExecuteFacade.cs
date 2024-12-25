@@ -19,6 +19,6 @@ public class ContextForExecuteFacade : IContext
         var book = _facade.Execute();
         _strategy.Manage(book);
        
-        // Tutaj będzie implementacja wczytania operacji do pliku 
+    
     }
 }

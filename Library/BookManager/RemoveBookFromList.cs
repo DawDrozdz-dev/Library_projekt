@@ -13,7 +13,7 @@ public class RemoveBookFromList : IManageStrategy
         }
         BaseOfBook.books.RemoveAll(item => item.Id == book.Id);
         _logger.Info($"\nBook with ID {book.Id} has been removed from library.");
-
+        Console.WriteLine($"\nBook with ID {book.Id} has been removed from library.");
         return this;
     }
 }
