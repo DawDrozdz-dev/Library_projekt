@@ -1,0 +1,90 @@
+                                            1. Klasa: FacadeForCreateBook
+
+1.1 Opis:
+Klasa `FacadeForCreateBook` implementuje interfejs `IFacade` i służy do tworzenia nowych książek.
+ Umożliwia użytkownikowi wprowadzenie danych książki, które są następnie walidowane i przetwarzane.
+
+1.2 Właściwości:
+- `private static NLog.Logger _logger`: Logger do rejestrowania informacji.
+- `private readonly IDirector _director`: Obiekt `IDirector` do budowania książki.
+- `private readonly IDataConverter _converter`: Obiekt `IDataConverter` do konwersji danych.
+- `private readonly IDataManager _dataManager`: Obiekt `IDataManager` do zarządzania danymi wejściowymi.
+
+1.3 Konstruktor:
+- `public FacadeForCreateBook(IDirector director, IDataConverter converter, IDataManager dataManager)`: 
+Konstruktor, który inicjalizuje pola `_director`, `_converter` i `_dataManager`.
+
+1.4 Metody:
+- `public IBook Execute()`: Metoda, która pobiera dane od użytkownika, waliduje je, tworzy książkę i rejestruje zmiany.
+
+1.5 Przykład użycia:
+```csharp
+IFacade facade = new FacadeForCreateBook(new Director(new BookBuilder()), new DataConverter(), new GetStringValue());
+IBook book = facade.Execute();
+
+                                                2. Klasa: FacadeForReadBook
+2.1 Opis:
+Klasa `FacadeForReadBook` implementuje interfejs `IFacade` i służy do odczytywania książek z bazy danych.
+ Wyświetla wszystkie dostępne książki.
+
+2.2 Metody:
+- `public IBook Execute()`: Metoda, która wyświetla wszystkie książki w bazie danych.
+ Jeśli baza jest pusta, informuje o tym użytkownika.
+
+2.3 Przykład użycia:
+IFacade facade = new FacadeForReadBook();
+IBook book = facade.Execute();
+
+                                                   3. Klasa: FacadeFroRemoveBook
+
+3.1 Opis:
+Klasa `FacadeFroRemoveBook` implementuje interfejs `IFacade` i służy do usuwania książek z bazy danych.
+ Umożliwia użytkownikowi wprowadzenie identyfikatora książki do usunięcia.
+
+3.2 Właściwości:
+- `private readonly IBookBuilder _builder`: Obiekt `IBookBuilder` do budowania książki.
+- `private readonly IDataConverter _converter`: Obiekt `IDataConverter` do konwersji danych.
+- `private readonly IDataManager _dataManager`: Obiekt `IDataManager` do zarządzania danymi wejściowymi.
+
+3.3 Konstruktor:
+- `public FacadeFroRemoveBook(IBookBuilder builder, IDataManager dataManager, IDataConverter converter)`:
+ Konstruktor, który inicjalizuje pola `_builder`, `_dataManager` i `_converter`.
+
+3.4 Metody:
+- `public IBook Execute()`: Metoda, która pobiera identyfikator książki od użytkownika, waliduje go i zwraca książkę do usunięcia.
+
+3.5 Przykład użycia:
+IFacade facade = new FacadeFroRemoveBook(new BookBuilder(), new GetStringValue(), new DataConverter());
+IBook book = facade.Execute();
+
+                                                4. Klasa: FacedeForUpdateBook
+
+4.1 Opis:
+Klasa `FacedeForUpdateBook` implementuje interfejs `IFacade` i służy do aktualizowania książek w bazie danych.
+ Umożliwia użytkownikowi wprowadzenie identyfikatora książki do edycji oraz nowych danych.
+
+4.2 Właściwości:
+- `private readonly IDataConverter _converter`: Obiekt `IDataConverter` do konwersji danych.
+- `private readonly IDataManager _dataManager`: Obiekt `IDataManager` do zarządzania danymi wejściowymi.
+- `private readonly ITakeBookFromList _updateBookManager`: Obiekt `ITakeBookFromList` do sprawdzania istnienia książki.
+- `private readonly IFacade _facade`: Obiekt `IFacade` do tworzenia nowych danych książki.
+
+4.3 Konstruktor:
+- `public FacedeForUpdateBook(IDataConverter converter, IDataManager dataManager, ITakeBookFromList updateBookManager, IFacade facade)`:
+ Konstruktor, który inicjalizuje pola `_converter`, `_dataManager`, `_updateBookManager` i `_facade`.
+
+4.4 Metody:
+- `public IBook Execute()`: Metoda, która pobiera identyfikator książki od użytkownika, sprawdza jej istnienie,
+ pobiera nowe dane i aktualizuje książkę.
+
+4.5 Przykład użycia:
+IFacade facade = new FacedeForUpdateBook(new DataConverter(), new GetStringValue(), new TakeBookFromList(), 
+new FacadeForCreateBook(new Director(new BookBuilder()), new DataConverter(), new GetStringValue()));
+IBook book = facade.Execute();
+
+                                            5. Interfejs: IFacade
+5.1 Opis:
+Interfejs `IFacade` definiuje metodę do wykonywania operacji na książkach.
+
+5.2 Metody:
+- `IBook Execute()`: Metoda do wykonywania operacji na książkach.

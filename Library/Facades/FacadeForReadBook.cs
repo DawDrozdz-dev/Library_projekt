@@ -13,10 +13,10 @@ public class FacadeForReadBook : IFacade
             return null;
         }
 
-        Console.WriteLine("Dostępne książki:");
+        Console.WriteLine("Dostępne książki:\n");
         foreach (var book in BaseOfBook.books)
         {
-            Console.WriteLine($"\n Book title; {book.Title}\n " +
+            Console.WriteLine($"Book title; {book.Title}\n " +
                 $"Author; {book.Author}\n " +
                 $"Price; {book.Price}\n " +
                 $"Description; {book.Description}\n" +

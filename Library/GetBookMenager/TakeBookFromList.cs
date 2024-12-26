@@ -1,8 +1,7 @@
 using Library.BookBase;
-using Library.BookManager;
 namespace Library.BookManager;
 
-public class UpdateBookManager : ITakeBookFromList
+public class TakeBookFromList : ITakeBookFromList
 {
     public bool GetBook(int id)
     {

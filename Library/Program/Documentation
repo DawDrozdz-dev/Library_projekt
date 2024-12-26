@@ -1,0 +1,85 @@
+
+1. Deklaracja klasy Program oraz inicjalizacja loggera NLog do rejestrowania błędów.
+
+public class Program
+{
+    private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+
+        metoda main {...}
+}
+
+
+2. Metoda Main
+
+public static void Main(string[] args)
+{
+    Console.WriteLine(
+        "Witaj w aplikacji 'moja biblioteka', wybierz co chcesz zrobić: \n");
+    Thread.Sleep(2000);
+}
+Metoda `Main` jest punktem wejścia do programu.
+Wyświetla powitanie i wprowadzenie do aplikacji, a następnie wstrzymuje wykonanie na 2 sekundy.
+
+
+3. Pętla główna
+
+    while (true)
+    {
+        Console.WriteLine(
+            "Wpisz 1 - aby stworzyć książkę.\nWpisz 2 - aby wyswietlić książki.\nWpisz 3 - aby usunąć książkę.\n" +
+            "Wpisz 4 - aby edytować książkę.\n" +
+            "Wpisz 5 - aby wyjsc.");
+
+Pętla `while` działa w nieskończoność, dopóki użytkownik nie wybierze opcji wyjścia. Wyświetla menu z opcjami do wyboru.
+
+
+4. Pobieranie danych od użytkownika
+
+        try
+        {
+            string data = Console.ReadLine();
+            IIntConverter converter = new ValidationForFactory();
+            int value = converter.ConvertInt(data);
+
+Pobieranie danych od użytkownika i konwersja wprowadzonego tekstu na liczbę całkowitą przy użyciu `ValidationForFactory`.
+
+
+5. Sprawdzanie opcji wyjścia
+            if (value == 5)
+            {
+                break;
+            }
+Jeśli użytkownik wybierze opcję `5`, pętla zostaje przerwana, a program kończy działanie.
+
+
+6. Tworzenie kontekstu strategii
+
+            var factoryForChoose = new FactoryForChooseStrategy();
+            var strategy = factoryForChoose.CreateContext(value);
+            strategy.Manage();
+            Thread.Sleep(4000);
+
+Tworzenie odpowiedniego kontekstu strategii na podstawie wybranej opcji i wykonanie operacji zarządzania książkami.
+ Następnie wstrzymanie wykonania na 4 sekundy.
+
+
+7. Obsługa wyjątków
+
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Błąd: {ex.Message}");
+            _logger.Error($"Błąd: {ex.Message}");
+            Console.WriteLine("Wcisnij 'enter' aby kontynuować\n");
+            Console.ReadKey();
+        }
+ 
+Obsługa wyjątków, wyświetlanie komunikatu o błędzie i rejestrowanie błędu za pomocą loggera NLog.
+ Program czeka na naciśnięcie klawisza `Enter`, aby kontynuować.
+
+
+8. Zakończenie programu
+
+    Console.WriteLine("Dziekuje za uzycie aplikacji.\n\n");
+
+Wyświetlanie komunikatu końcowego po zakończeniu działania pętli głównej.
+

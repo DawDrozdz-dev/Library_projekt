@@ -1,0 +1,59 @@
+                                            1. Klasa: AddBookToList
+ 1.1 Opis:
+Klasa `AddBookToList` implementuje interfejs `IManageStrategy` i służy do dodawania książek do listy
+
+1.2 Metody:
+- `public IManageStrategy Manage(IBook book)`: Dodaje książkę do listy `BaseOfBook.books` i wyświetla komunikat o dodaniu książki.
+- Zdaje sobię sprawe, ze klasa łamie zasade SRP, natomiast nakladanie kolejnych warstw abstrakcji spowodowaloby 
+przerost programu nad trescia
+
+1.3 Przykład użycia:
+IManageStrategy addStrategy = new AddBookToList();
+addStrategy.Manage(new Comic { Title = "New Comic", Author = "Author", Description = "Description", Price = 9.99, Id = 11 });
+
+                                            2. Interfejs: IManageStrategy
+2.1 Opis:
+Interfejs `IManageStrategy` definiuje metodę do zarządzania książkami, oraz wskazuje na strategie.
+
+ 2.2 Metody:
+- `IManageStrategy Manage(IBook book)`: Metoda do implementacji dla danej strategii.
+
+                                            3. Klasa: NullStrategy
+3.1 Opis:
+Klasa `NullStrategy` implementuje interfejs `IManageStrategy` i służy jako strategia,
+ która nie wykonuje żadnej operacji. Przez blednie zaplanowany Context oraz fabryke (folder UI), jeden obiekt zmuszony
+ jest zwrocic pusty obiekt.
+
+3.2 Metody:
+- `public IManageStrategy Manage(IBook book)`: Zwraca wartosc `null`.
+
+                                            4. Klasa: RemoveBookFromList
+4.1 Opis:
+Klasa `RemoveBookFromList` implementuje interfejs `IManageStrategy` i służy do usuwania książek z listy.
+
+4.2 Właściwości:
+- `private static NLog.Logger _logger`: Prywatne pole przechowujące logger.
+
+4.3 Metody:
+- `public IManageStrategy Manage(IBook book)`: Usuwa książkę z listy `BaseOfBook.books`
+ na podstawie identyfikatora książki. Jeśli książka nie istnieje, rzuca wyjątek `ArgumentException`.
+ - tutaj podobnie jak wyżej  klasa łamie zasade SRP, natomiast nakladanie kolejnych warstw abstrakcji spowodowaloby 
+przerost programu nad trescia
+
+4.4 Przykład użycia:
+IManageStrategy removeStrategy = new RemoveBookFromList();
+removeStrategy.Manage(new Comic { Id = 2 });
+
+                                                5. Klasa: UpdateBookInList
+
+5.1 Opis:
+Klasa `UpdateBookInList` implementuje interfejs `IManageStrategy` i służy do aktualizowania informacji o książkach na liście.
+
+5.2 Metody:
+- `public IManageStrategy Manage(IBook book)`: Aktualizuje informacje o książce na liście `BaseOfBook.books`
+ na podstawie identyfikatora książki.
+
+5.3 Przykład użycia:
+IManageStrategy updateStrategy = new UpdateBookInList();
+updateStrategy.Manage(new Comic { Id = 2, Title = "Updated Title", Author = "Updated Author",
+ Description = "Updated Description", Price = 19.99 });

@@ -1,0 +1,52 @@
+                                     1. Klasa: ContextForExecuteFacade
+
+1.1 Opis:
+Klasa `ContextForExecuteFacade` implementuje interfejs `IContext` i zarządza wykonaniem operacji 
+na książkach przy użyciu wzorca fasady i strategii zarządzania.
+
+1.2 Właściwości:
+- `private readonly IFacade _facade`: Prywatne pole przechowujące obiekt fasady.
+- `private readonly IManageStrategy? _strategy`: Prywatne pole przechowujące strategię zarządzania książkami.
+
+1.3 Konstruktor:
+- `public ContextForExecuteFacade(IFacade facade, IManageStrategy? strategy)`:
+ Konstruktor, który inicjalizuje pola `_facade` i `_strategy`.
+
+1.4 Metody:
+- `public void Manage()`: Metoda, która wykonuje operację na książce przy użyciu fasady i strategii zarządzania.
+
+1.5 Przykład użycia:
+
+IFacade facade = new FacadeForCreateBook(new Director(new BookBuilder()), new DataConverter(), new GetStringValue());
+IManageStrategy strategy = new AddBookToList();
+IContext context = new ContextForExecuteFacade(facade, strategy);
+context.Manage();
+
+
+                                         2. Klasa: FactoryForChooseStrategy
+
+2.1 Opis:
+Klasa `FactoryForChooseStrategy` służy do tworzenia kontekstu dla różnych strategii zarządzania książkami
+ na podstawie podanego typu operacji.
+
+2.2 Metody:
+- `public IContext CreateContext(int type)`: Metoda, która tworzy i zwraca odpowiedni kontekst na podstawie podanego typu operacji.
+
+2.3 Przykład użycia:
+FactoryForChooseStrategy factory = new FactoryForChooseStrategy();
+IContext context = factory.CreateContext(1);
+context.Manage();
+
+2.4 Typy operacji:
+- `1`: Tworzenie książki i dodawanie jej do listy.
+- `2`: Odczyt książki.
+- `3`: Usuwanie książki z listy.
+- `4`: Aktualizacja książki na liście.
+
+                                            3. Interfejs: IContext
+
+3.1 Opis:
+Interfejs `IContext` definiuje metodę do zarządzania operacjami na książkach.
+
+3.2 Metody:
+- `void Manage()`: Metoda do implementacji strategii z folderu 'BookMenager'

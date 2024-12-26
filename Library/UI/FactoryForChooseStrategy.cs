@@ -32,7 +32,7 @@ public class FactoryForChooseStrategy
                     new FacedeForUpdateBook(
                         new DataConverter(),
                         new GetStringValue(),
-                        new UpdateBookManager(),
+                        new TakeBookFromList(),
                         new FacadeForCreateBook(new Director(new BookBuilder()), new DataConverter(), new GetStringValue())),
                     new UpdateBookInList()
                 );

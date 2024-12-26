@@ -1,0 +1,59 @@
+                                            1. Klasa: DataConverter
+
+1.1 Opis:
+Klasa `DataConverter` implementuje interfejs `IDataConverter` i służy do konwersji danych wejściowych na odpowiednie typy.
+
+1.2 Metody:
+- `public string ConvertString(string value)`: Konwertuje ciąg znaków.
+ Sprawdza, czy wartość nie jest pusta i czy długość nie przekracza 30 znaków. W przeciwnym razie zwraca "-".
+- `public int ConvertInt(string value)`: Konwertuje ciąg znaków na liczbę całkowitą. Jeśli konwersja się nie powiedzie, zwraca 0.
+- `public double ConvertDouble(string value)`: Konwertuje ciąg znaków na liczbę zmiennoprzecinkową.
+ Jeśli konwersja się nie powiedzie, zwraca 0.
+
+1.3 Przykład użycia:
+
+IDataConverter converter = new DataConverter();
+string validString = converter.ConvertString("Valid String");
+int validInt = converter.ConvertInt("123");
+double validDouble = converter.ConvertDouble("123.45");
+                                                
+                                                 2. Klasa: ValidationForFactory
+2.1 Opis:
+Klasa `ValidationForFactory` implementuje interfejs `IIntConverter` i
+ służy do walidacji oraz konwersji danych wejściowych na liczby całkowite.
+
+2.2 Metody:
+- `public int ConvertInt(string value)`: Konwertuje ciąg znaków na liczbę całkowitą,
+ jeśli wartość jest jedną z dozwolonych (1, 2, 3, 4, 5). W przeciwnym razie rzuca wyjątek `ArgumentException`.
+
+2.3 Przykład użycia:
+IIntConverter validator = new ValidationForFactory();
+int validInt = validator.ConvertInt("3");
+
+                                                3. Interfejs: IDataConverter
+3.1 Opis:
+Interfejs `IDataConverter` dziedziczy po interfejsach `IStringConverter`, `IDoubleConverter` i `IIntConverter`, 
+definiując metody do konwersji danych.
+
+                                                4. Interfejs: IDoubleConverter
+
+4.1 Opis:
+Interfejs `IDoubleConverter` definiuje metodę do konwersji ciągu znaków na liczbę zmiennoprzecinkową.
+
+4.2 Metody:
+- `double ConvertDouble(string value)`: Konwertuje ciąg znaków na liczbę zmiennoprzecinkową.
+
+                                                 5. Interfejs: IIntConverter
+5.1 Opis:
+Interfejs `IIntConverter` definiuje metodę do konwersji ciągu znaków na liczbę całkowitą.
+
+ 5.2 Metody:
+- `int ConvertInt(string value)`: Konwertuje ciąg znaków na liczbę całkowitą.
+
+                                                 6. Interfejs: IStringConverter
+6.1 Opis:
+Interfejs `IStringConverter` definiuje metodę do konwersji ciągu znaków.
+
+ 6.2 Metody:
+- `string ConvertString(string value)`: Konwertuje ciąg znaków.
+dodatkowe informacje?

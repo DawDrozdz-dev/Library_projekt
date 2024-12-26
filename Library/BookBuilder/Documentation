@@ -1,0 +1,65 @@
+                                           1. Klasa: BookBuilder
+1.1 Opis:
+Klasa `BookBuilder` implementuje interfejs `IBookBuilder` i służy do budowania obiektów typu `Comic`.
+
+1.2 Właściwości:
+- `private readonly IBook comic`: Prywatne pole przechowujące obiekt `Comic`.
+
+1.3 Metody:
+- `public void SetTitle(string title)`: Ustawia tytuł komiksu.
+- `public void SetAuthor(string author)`: Ustawia autora komiksu.
+- `public void SetDescription(string description)`: Ustawia opis komiksu.
+- `public void SetPrice(double price)`: Ustawia cenę komiksu.
+- `public void SetId(int id)`: Ustawia identyfikator komiksu.
+- `public IBook Build()`: Zwraca zbudowany obiekt `Comic`.
+
+1.4 Przykład użycia:
+IBookBuilder builder = new BookBuilder();
+builder.SetTitle("Spiderman");
+builder.SetAuthor("Stan Lee");
+builder.SetDescription("Historia Petera Parkera, który po ugryzieniu przez radioaktywnego pająka zyskuje nadludzkie zdolności.");
+builder.SetPrice(19.11);
+builder.SetId(2);
+IBook comic = builder.Build();
+
+                                             2. Klasa: Director
+2.1 Opis:
+Klasa `Director` implementuje interfejs `IDirector` i zarządza procesem budowania obiektów `IBook` przy użyciu `IBookBuilder`.
+
+2.2 Pola:
+- private readonly IBookBuilder _bookBuilder: Prywatne pole przechowujące obiekt IBookBuilder.
+
+2.3 Konstruktor:
+- public Director(IBookBuilder bookBuilder): Konstruktor, który służy do wstrzyknięcia zaleznosci
+
+2.4 Metody:
+- public IBook BuildBook(string author, string title, string description, double price, int bookId):
+ Metoda, która buduje obiekt `IBook` przy użyciu `IBookBuilder`.
+
+2.5 Przykład użycia:
+IBookBuilder builder = new BookBuilder();
+Director director = new Director(builder);
+IBook comic = director.BuildBook("Stan Lee", "Spiderman",
+ "Historia Petera Parkera, który po ugryzieniu przez radioaktywnego pająka zyskuje nadludzkie zdolności.", 19.11, 2);
+ 
+
+                                            3. Interfejs: IBookBuilder
+3.1 Opis:
+Interfejs IBookBuilder definiuje metody do budowania obiektów IBook.
+
+3.2 Metody:
+- void SetTitle(string title): Ustawia tytuł książki.
+- void SetAuthor(string author): Ustawia autora książki.
+- void SetDescription(string description): Ustawia opis książki.
+- void SetPrice(double price): Ustawia cenę książki.
+- void SetId(int id): Ustawia identyfikator książki.
+- IBook Build(): Zwraca zbudowany obiekt IBook.
+
+
+                                            4. Interfejs: IDirector
+4.1 Opis:
+Interfejs IDirector definiuje metodę do zarządzania procesem budowania obiektów IBook.
+
+4.2 Metody:
+- IBook BuildBook(string author, string title, string description, double price, int bookId):
+ Buduje obiekt `IBook` przy użyciu `IBookBuilder`.

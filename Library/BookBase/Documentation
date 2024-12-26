@@ -1,0 +1,79 @@
+                                                   1. Klasa: BaseOfBook
+1.1 Opis: 
+    Klasa BaseOfBook zarządza bazą danych książek w liscie. Jest to klasa singleton, co oznacza,
+że może istnieć tylko jedna instancja tej klasy oraz jest globalny dostep do niej.
+
+1.2 Pola:
+- private static BaseOfBook _instance: Prywatne pole przechowujące jedyną instancję klasy BaseOfBook.
+- private static readonly object _obj: Obiekt używany w celu zapewnienia, 
+że tylko jedna instancja klasy zostanie utworzona oraz blokuje wykorzystanie wątków do jedenego wykonanego w czasie.
+ - public static List<IBook> books: Publiczna, statyczna lista książek, która przechowuje wszystkie książki w bazie danych.
+ 
+1.3 Konstruktor:
+private BaseOfBook() { }: Prywatny konstruktor, który zapobiega tworzeniu instancji klasy z zewnątrz.
+
+1.3 Metody:
+- public static BaseOfBook GetInstance(): Metoda statyczna, która zwraca jedyną instancję klasy BaseOfBook. 
+Jeśli instancja nie istnieje, tworzy ją w sposób bezpieczny dla wątków.
+
+1.4 Przykład użycia:
+ - BaseOfBook baseOfBook = BaseOfBook.GetInstance();
+List<IBook> allBooks = BaseOfBook.books;
+
+1.5 Przykładowe dane: 
+Lista książek zawiera przykładowe komiksy:
+ - "Alicja w krainie czarów", 
+ - "Spiderman",
+ - "Batman",
+ - "Superman",
+ - "Wonder Woman",
+ - "X-Men",
+ - "The Flash",
+ - "Green Lantern",
+ - "Iron Man" i "Thor".
+ 
+                                                2. Klasa Comic                           
+ 2.1 Opis:
+  Klasa Comic reprezentuje komiks i implementuje interfejs IBook.
+ 
+ 2.2 Właściwości:
+ - public string Title { get; set; }: Tytuł komiksu.
+ - public string Author { get; set; }: Autor komiksu.
+ - public string Description { get; set; }: Opis komiksu.
+ - public double Price { get; set; }: Cena komiksu.
+ - public int Id { get; set; }: Unikalny identyfikator komiksu.
+ 
+ 2.3 Metody:
+ - public override string ToString(): Metoda, która zwraca tekstową reprezentację obiektu Comic.
+  Zawiera informacje o tytule, autorze, opisie, cenie i identyfikatorze komiksu.
+  
+ 2.4 Przykład użycia:
+ Comic comic = new Comic
+ {
+     Title = "Spiderman",
+     Author = "Stan Lee",
+     Description = "Historia Petera Parkera, który po ugryzieniu przez radioaktywnego pająka zyskuje nadludzkie zdolności.",
+     Price = 19.11,
+     Id = 2
+ };
+ Console.WriteLine(comic.ToString());
+ 
+ 2.5 Przykładowe dane:
+ Title: "Spiderman"
+ Author: "Stan Lee"
+ Description: "Historia Petera Parkera, który po ugryzieniu przez radioaktywnego pająka zyskuje nadludzkie zdolności."
+ Price: 19.11
+ Id: 2
+ 
+ 
+                                         3. Interfejs: IBook
+ 3.1 Opis:
+ Interfejs IBook definiuje właściwości, które muszą być zaimplementowane przez każdą klasę reprezentującą książkę.
+ Powstał w celu rozszerzalnosci kodu. Daje mozliwosc zbudowania rodziny obiektow.
+ 
+ 3.2 Właściwości:
+ public string Title { get; set; }: Tytuł książki.
+ public string Author { get; set; }: Autor książki.
+ public string Description { get; set; }: Opis książki.
+ public double Price { get; set; }: Cena książki.
+ public int Id { get; set; }: Unikalny identyfikator książki.

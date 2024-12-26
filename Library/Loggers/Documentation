@@ -1,0 +1,8 @@
+Plik konfiguracyjny NLog służy do zapisywania logów aplikacji do plików. Została użyta do tego biblioteka Nlog
+Logi są podzielone na dwa rodzaje: 
+- błędy 
+- informacje.
+
+Błędy są zapisywane do pliku w katalogu logs/errors z nazwą pliku odpowiadającą bieżącej dacie (np. 2024-12-26.log).
+Informacje są zapisywane do pliku w katalogu logs/info, również z nazwą pliku odpowiadającą bieżącej dacie.
+Pliki z logami można znaleźć w katalogu logs w głównym katalogu aplikacji (${basedir}).

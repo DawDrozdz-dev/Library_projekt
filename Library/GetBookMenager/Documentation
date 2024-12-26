@@ -1,0 +1,22 @@
+                            1. Interfejs: ITakeBookFromList
+
+1.1 Opis:
+Interfejs `ITakeBookFromList` definiuje metodę do pobierania książki z listy na podstawie identyfikatora.
+
+1.2 Metody:
+- `bool GetBook(int id)`: Sprawdza, czy książka o podanym identyfikatorze istnieje na liście.
+
+                             2. Klasa: TakeBookFromList
+
+2.1 Opis:
+Klasa `TakeBookFromList` implementuje interfejs `ITakeBookFromList` i służy do sprawdzania,
+ czy książka o podanym identyfikatorze istnieje na liście `BaseOfBook.books`.
+
+2.2 Metody:
+- `public bool GetBook(int id)`: Przeszukuje listę `BaseOfBook.books` i zwraca `true`,
+ jeśli książka o podanym identyfikatorze istnieje, w przeciwnym razie zwraca `false`.
+
+2.3 Przykład użycia:
+ITakeBookFromList bookChecker = new TakeBookFromList();
+bool bookExists = bookChecker.GetBook(1);
+Console.WriteLine($"Book exists: {bookExists}");
